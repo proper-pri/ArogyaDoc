@@ -3,7 +3,7 @@ import Dashboard from '../components/Dashboard';
 
 const HomePage = () => {
   return (
-  <></>
+ <Dashboard/>
   );
 };
 

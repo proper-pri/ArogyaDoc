@@ -16,7 +16,8 @@ exports.getAllPatients = async (req, res) => {
 // delete selected patient
 exports.deletePatient = async (req, res) => {
   try {
-    const { idArr } = req.body;
+    const idArr  = req.body;
+    console.log(idArr);
 
     if (!Array.isArray(idArr) || idArr.length === 0) {
       return res

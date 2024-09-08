@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { login } from '../services/Service';
+import { getPatientData} from '../services/Service';
 
-import Cookies from 'js-cookie';
+
+
 import { loginUser } from '../redux/auth/authThunk';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import "../pages design/LoginPage.css";
 const LoginPage = () => {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-const dipatch=useDispatch();//hook
-
+const dispatch=useDispatch();//hook
+const navigate  = useNavigate();
 
 
   const handleSubmit = async (e) => {
@@ -20,20 +24,14 @@ const dipatch=useDispatch();//hook
         password: password
     };
 
-    try {
+    try { 
         
-        const res =  dipatch(loginUser(body));
+          dispatch(loginUser(body,navigate));
+        
+          
   
 
-        if (res && res.token) {
-            // Save the token in a cookie
-            Cookies.set('authToken', res.token, { expires: 7 }); // Expires in 7 days
-
-            // Handle successful login
-            console.log('Token saved in cookie:', res.token);
-        } else {
-            console.log('Login failed or no token received');
-        }
+       
     } catch (error) {
         console.error('Error during login:', error);
     }
@@ -42,44 +40,48 @@ const dipatch=useDispatch();//hook
 
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-4">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Login</h5>
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input
+
+    
+
+<div className="container" >
+  <div className="top" />
+  <div className="bottom" />
+  <div className="center">
+    <h2>Log In</h2>
+    <input
                     type="text"
                     className="form-control"
+                    placeholder='Username'
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                   />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
+    <input
                     type="password"
+                    placeholder='Password'
+
                     className="form-control"
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Login
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                  />   
+                  <button onClick={handleSubmit}>Submit</button> <h2>&nbsp;</h2>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
   );
 };
 

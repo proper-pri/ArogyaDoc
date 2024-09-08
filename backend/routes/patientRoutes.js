@@ -31,5 +31,5 @@ router.put('/update',authMiddleware,updatePatient);
 router.post('/register',registerDoctor);
 router.post('/login',loginDoctor);
 
-
+ 
 module.exports = router;

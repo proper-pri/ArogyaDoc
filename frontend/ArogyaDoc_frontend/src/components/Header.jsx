@@ -1,23 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './components design/Dashboard.css'; // Include your CSS file
 
-const Header = () => {
+const Header = ({ toggleProfileDropdown, showProfileDropdown, toggleNotificationsDropdown, showNotificationsDropdown }) => {
+  useEffect(() => {
+    const handleClickOutside = () => {
+      toggleProfileDropdown(false);
+      toggleNotificationsDropdown(false);
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [toggleProfileDropdown, toggleNotificationsDropdown]);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#home">Patient Dashboard</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="#profile">Profile</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#logout">Logout</a>
-          </li>
-        </ul>
+    <header className="header">
+      <div className="header-left">
+        <button className="back-button">&larr; Back</button>
+        <h1>Dashboard</h1>
       </div>
-    </nav>
+      <div className="header-right">
+        <div className="profile">
+          <div className="profile-icon" onClick={(e) => toggleProfileDropdown(!showProfileDropdown, e)}>
+            &#128100; {/* Profile user icon */}
+          </div>
+          {showProfileDropdown && (
+            <div className="notifications-dropdown">
+              <ul>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className="profile">
+          <div className="profile-icon" onClick={(e) => toggleNotificationsDropdown(!showNotificationsDropdown, e)}>
+            &#128276; {/* Notification bell icon */}
+          </div>
+          {showNotificationsDropdown && (
+            <div className="profile-dropdown">
+              <ul>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
   );
 };
 

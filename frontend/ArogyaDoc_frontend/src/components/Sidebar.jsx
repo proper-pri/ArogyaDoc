@@ -1,17 +1,35 @@
 import React from 'react';
-import { FaHome, FaUser, FaCalendarAlt, FaCog } from 'react-icons/fa';
+import './components design/Dashboard.css'; // Include your CSS file
 
-const Sidebar = () => {
-  return (
-    <div className="bg-light sidebar">
-      <div className="list-group">
-        <a href="/home" className="list-group-item list-group-item-action"><FaHome /> Home</a>
-        <a href="/patients" className="list-group-item list-group-item-action"><FaUser /> Patients</a>
-        <a href="/appointments" className="list-group-item list-group-item-action"><FaCalendarAlt /> Appointments</a>
-        <a href="/settings" className="list-group-item list-group-item-action"><FaCog /> Settings</a>
-      </div>
-    </div>
-  );
-};
+const Sidebar = ({ activeTab, handleTabClick }) => (
+  <nav className="sidebar">
+    <ul className="tabs">
+      <li
+        className={`tab ${activeTab === 'PatientListPage' ||'PatientDetailPage' ? 'active' : ''}`}
+        onClick={() => handleTabClick('PatientListPage')}
+      >
+        PatientListPage
+      </li>
+      {/* <li
+        className={`tab ${activeTab === 'PatientDetailPage' ? 'active' : ''}`}
+        onClick={() => handleTabClick('PatientDetailPage')}
+      >
+        PatientDetailPage
+      </li> */}
+      <li
+        className={`tab ${activeTab === 'AddPatient' ? 'active' : ''}`}
+        onClick={() => handleTabClick('AddPatient')}
+      >
+        Add Patient
+      </li>
+      <li
+        className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
+        onClick={() => handleTabClick('settings')}
+      >
+        Settings
+      </li>
+    </ul>
+  </nav>
+);
 
 export default Sidebar;

@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Import your page components
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import { PatientListPage } from './pages/PatientListPage';
-import { PatientDetailPage } from './pages/PatientDetailPage';
+import { PatientListPage } from './components/contents/PatientListPage';
+import { PatientDetailPage } from './components/contents/PatientDetailPage';
 
 
 function AppRoutes() {
@@ -14,8 +14,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/homePage" element={<HomePage />} />
         <Route path="/" element={<LoginPage />} />
-        <Route path="/patients" element={<PatientListPage />} />
-        <Route path="/patients/:id" element={<PatientDetailPage />} />
+        
       </Routes>
     </Router>
   );

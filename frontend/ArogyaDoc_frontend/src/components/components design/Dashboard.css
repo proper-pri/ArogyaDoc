@@ -1,0 +1,439 @@
+/* General Styles */
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Ensure no extra scroll bars on body */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a3f6e;
+    color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left h1 {
+    margin-left: 15px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: #ffcc00;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.profile-icon, .notification-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.profile-icon:hover, .notification-icon:hover {
+    color: #ffcc00;
+}
+
+/* Dropdown styling */
+.notifications-dropdown, .profile-dropdown {
+    position: absolute;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.notifications-dropdown {
+    top: 40px;
+    right: 110px;
+    width: 150px;
+    color: red;
+}
+
+.profile-dropdown {
+    top: 40px;
+    right: 50px;
+    width: 150px;
+}
+
+.notifications-dropdown ul, .profile-dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.notifications-dropdown li, .profile-dropdown li {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.notifications-dropdown li:hover, .profile-dropdown li:hover {
+    background-color: #f0f4f8;
+}
+
+/* Sidebar Styles */
+.dashboard {
+    display: flex;
+    flex: 1;
+    overflow: hidden; /* Ensure content area doesn’t push the sidebar */
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #2a3f6e;
+    color: #fff;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tab {
+    color: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.tab.active {
+    background-color: #ffcc00;
+    color: #2a3f6e;
+}
+
+.tab.active:hover {
+    background-color: #ffcc00;
+}
+
+.tab:hover {
+    background-color: #4169e1;
+}
+
+/* Content Styles */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: calc(100vh - 60px); /* Adjust the height based on the header size */
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Form Styles */
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.patient-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-button {
+    background-color: #2a3f6e;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #ffcc00;
+    color: #2a3f6e;
+}
+
+/* Patient Detail Page Styles */
+.patient-detail-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.patient-detail-container h2 {
+    margin-top: 0;
+}
+
+.detail-group {
+    margin-bottom: 15px;
+}
+
+.detail-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.detail-group p {
+    margin: 0;
+    color: #555;
+}
+
+.back-button-pd {
+    width: 10%;
+    border: none;
+    border-radius: 10%;
+    font-weight: 700;
+    font-size: unset;
+}
+
+.back-button-pd:hover {
+   
+    border-radius: 10%;
+    font-weight: 700;
+    font-size: unset;
+    color:#4169e1
+   
+}
+
+/* Patient List Page Styles */
+.patient-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: auto;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.patient-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.patient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.patient-info {
+    flex: 1;
+}
+
+.view-button {
+    background-color: #2a3f6e;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    max-width: 150px;
+    text-align: center;
+}
+
+.view-button:hover {
+    background-color: #1a2a47;
+}
+
+.delete-button {
+    background-color: #9a2b2b;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    max-width: 150px;
+    text-align: center;
+}
+
+.delete-button:hover {
+    background-color: #722232;
+}
+/* pagination css */
+/* {shouldShowPagination && (
+    <div className="pagination">
+      <button
+        className="page-button"
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      <button
+        className="page-button"
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
+    </div>
+  )} */
+
+  .pagination{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content:center;
+  }
+  .page-button {
+    width: 10%;
+    border-radius: 10%;
+    font-weight: 700;
+    font-size: unset;
+
+}
+.page-button:hover:active {
+    width: 10%;
+    border-radius: 10%;
+    font-weight: 700;
+    font-size: unset;
+    color:#4169e1
+
+}
+.page-button.disabled {
+    background-color: #6c757d;
+    color: #d6d6d6;
+    cursor: not-allowed;
+    border: 1px solid #6c757d;
+  }
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-left {
+        margin-bottom: 10px;
+    }
+
+    .header-right {
+        margin-top: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-width: none;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 10px;
+        height: auto; /* Allow content height to grow naturally on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-left h1 {
+        font-size: 1.2em;
+    }
+
+    .profile-icon, .notification-icon {
+        font-size: 1.5em;
+    }
+
+    .form-container, .patient-detail-container, .patient-list-container {
+        padding: 15px;
+    }
+
+    .submit-button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
